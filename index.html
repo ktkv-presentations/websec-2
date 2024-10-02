@@ -1,258 +1,1170 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>reveal.js</title>
 
-	<title>reveal.js</title>
+        <link rel="stylesheet" href="dist/reset.css" />
+        <link rel="stylesheet" href="dist/reveal.css" />
+        <link rel="stylesheet" href="dist/theme/tokyo-night.css" />
 
-	<link rel="stylesheet" href="dist/reset.css">
-	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/tokyo-night.css">
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/tokyo-night.css" />
+        <link rel="stylesheet" href="plugin/chalkboard/style.css" />
+        <link rel="stylesheet" href="plugin/customcontrols/style.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
-	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/tokyo-night.css">
-	<link rel="stylesheet" href="plugin/chalkboard/style.css">
-	<link rel="stylesheet" href="plugin/customcontrols/style.css">
-	<script src="https://cdn.tailwindcss.com"></script>
-</head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h1>Passive recon</h1>
+                    <img
+                        data-type="qrcode"
+                        alt="https://ktkv-presentations.github.io/websec-2/"
+                        class="r-stretch" />
+                </section>
+                <section>
+                    <section>
+                        <h1>Broadcast Signal Intrusion</h1>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="border-b">
+                                <h4>Запуск приложения</h4>
+                                <code>имя_приложения</code>
+                            </div>
+                            <div class="border-b">
+                                <h4>Флаги (опции)</h4>
+                                <p>
+                                    дополнительные параметры, которые изменяют
+                                    поведение команды. Они начинаются с одного
+                                    или двух дефисов
+                                </p>
+                                <code>имя_приложения -h</code>
+                                <code>имя_приложения --help</code>
+                            </div>
+                            <div class="border-b">
+                                <h4>Команда -h или --help</h4>
+                                <p>
+                                    обычно используется для получения справочной
+                                    информации о команде или приложении
+                                </p>
+                            </div>
+                            <div class="border-b">
+                                <h4>Комбинирование флагов</h4>
+                                <code>имя_приложения -a -b</code>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <h1>Broadcast Signal Intrusion</h1>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="border-b">
+                                <h4>Аргументы</h4>
+                                <code>имя_приложения домен</code>
+                            </div>
+                            <div class="border-b">
+                                <h4>Выход из приложения</h4>
+                                <code>Ctrl + C</code>
+                            </div>
+                            <div class="border-b">
+                                <h4>Установка пакета</h4>
+                                <code>sudo apt install fierce</code>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Recon</h1>
+                        <p>
+                            процесс сбора информации о цели (например, системе,
+                            сети или веб-приложении) с целью выявления
+                            потенциальных уязвимостей и подготовки к последующим
+                            атакам или тестам
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>whois</h1>
+                        <p>
+                            получает информацию о владельце домена,
+                            регистратора, даты регистрации и обновления, а также
+                            информацию о DNS-серверах
+                        </p>
+                        <article>
+                            <p>
+                                <code>whois домен</code>
+                                - получение данных о домене.
+                            </p>
+                            <p>
+                                <code>whois IP-адрес</code>
+                                - информация об IP-адресе.
+                            </p>
+                            <p>
+                                <code>whois -h сервер whois</code>
+                                использование конкретного сервера whois для
+                                запроса.
+                            </p>
+                        </article>
+                    </section>
+                    <section>
+                        <pre class="r-stretch">
+                            <code>
+┌──(pasha㉿armitage)-[~]
+└─$ whois omsktec.ru
+% TCI Whois Service. Terms of use:
+% https://tcinet.ru/documents/whois_ru_rf.pdf (in Russian)
+% https://tcinet.ru/documents/whois_su.pdf (in Russian)
 
-<body>
-	<div class="reveal">
-		<div class="slides">
-			<section>
-				<h1>
-					Beautiful presentations
-				</h1>
-				<h2>New features</h2>
-				<ul>
-					<li>Nerd icons </li>
-					<li><code class="js">(inline) => code("highlighting")</code></li>
-					<li>Automatic QR Code generation</li>
-					<li>and much more!</li>
-				</ul>
-			</section>
-			<section>
-				<h1>
-					Custom TokyoNight theme
-				</h1>
-				<h2 class="fragment">That has</h2>
-				<h3 class="fragment">Multi</h3>
-				<h4 class="fragment">Level</h4>
-				<h5 class="fragment">Heading</h5>
-				<h6 class="fragment">Coloring</h6>
-				<h6>Thanks to this project <a href="https://github.com/tcmmichaelb139/obsidian-tokyonight"></a> for the
-					colorscheme!</h6>
-			</section>
-			<section>
-				<section>
-					<h1>Tailwind CSS</h1>
-					<div class="grid grid-cols-2 gap-8">
-						<div>
-							<h5>Lorem, ipsum.</h5>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quod fugiat harum modi laboriosam
-								dignissimos, maxime possimus? Error, nihil in.</p>
-						</div>
-						<div>
-							<h5>Lorem, ipsum.</h5>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quod fugiat harum modi laboriosam
-								dignissimos, maxime possimus? Error, nihil in.</p>
-						</div>
-						<div class="col-span-2">
-							<h5>Lorem, ipsum.</h5>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quod fugiat harum modi laboriosam
-								dignissimos, maxime possimus? Error, nihil in.</p>
-						</div>
-					</div>
-				</section>
-				<section>
-					<h1>Custom classes</h1>
-					<div class="grid grid-cols-3 gap-8">
-						<div class="border-r">
-							<h5>border-r</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, soluta!</p>
-						</div>
-						<div class="border-o">
-							<h5>border-o</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, soluta!</p>
-						</div>
-						<div class="border-y">
-							<h5>border-y</h5>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, soluta!</p>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section>
-				<section data-auto-animate>
-					<h1>New code highlighting!</h1>
-					<div>
-						Now also has Tokyo Night <code>highlight.js</code> highlighting implementation
-					</div>
-					<pre><code data-trim data-noescape>
-var foo = {
-    bar: function () {
-             alert("Hello, World!");
-         }
-};	
-					</code></pre>
-				</section>
-				<section data-auto-animate>
-					<h1>New code highlighting!</h1>
-					<h5>Inline code highlighting is now also supported!</h5>
-					<p>
-						Just wrap your code with <code>&lt;code&gt;</code> tag and get
-						highlighting like this <code class="js">const foo = () => {return bar}</code>!
-					</p>
-				</section>
-			</section>
-			<section>
-				<h1>Mermaid for beautiful diagrams!</h1>
-				<div class="mermaid">
-					<pre>
-						erDiagram
-    CUSTOMER ||--o{ ORDER : ""
-    CUSTOMER {
-        string name
-        string custNumber
-        string sector
-    }
-    ORDER ||--|{ LINE-ITEM : contains
-    ORDER {
-        int orderNumber
-        string deliveryAddress
-    }
-    LINE-ITEM {
-        string productCode
-        int quantity
-        float pricePerUnit
-    }
-    ORDER ||--|{ STUDENT : contains
-    STUDENT {
-        int orderNumber
-        string deliveryAddress
-    }
-						</pre>
-				</div>
-				<h4>Check documentation <a href="https://mermaid.js.org/config/usage.html">here</a>!</h4>
-			</section>
-			<section>
-				<h1>Now supports Nerd font icons!</h1>
-				<div>Nerdy project that adds icons to font itself</div>
-				<h6>Checkout their site for icons like this <a href="https://www.nerdfonts.com/">󰖟</a>!
-				</h6>
-			</section>
-			<section>
-				<h1>Now supports automatic QRCode generation!</h1>
-				<div>With GoQR you can just add data-type and alt attributes to your <code
-						class="html">&lt;img alt="https://goqr.me/" data-type="qrcode" / &gt;</code> tag!</div>
-				<img class="r-stretch" alt="https://goqr.me/" data-type="qrcode" />
-				</h6>
-			</section>
-			<section>
-				<h1>New changes on the way!</h1>
-			</section>
-		</div>
-	</div>
+domain:        OMSKTEC.RU
+nserver:       ns1.timeweb.ru.
+nserver:       ns2.timeweb.ru.
+nserver:       ns3.timeweb.org.
+nserver:       ns4.timeweb.org.
+state:         REGISTERED, DELEGATED, VERIFIED
+org:           BOU OO SPO Torgovoekonomicheskij kolledzh
+taxpayer-id:   5502029267
+registrar:     R01-RU
+admin-contact: https://partner.r01.ru/contact_admin.khtml
+created:       2009-05-12T20:00:00Z
+paid-till:     2025-05-12T21:00:00Z
+free-date:     2025-06-13
+source:        TCI
 
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-	<script src="plugin/qrcode/qrcode.js"></script>
-	<script src="plugin/mermaid/mermaid.js"></script>
-	<script src="plugin/chalkboard/plugin.js"></script>
-	<script src="plugin/customcontrols/plugin.js"></script>
+Last updated on 2024-10-02T20:56:30Z
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>dig</h1>
+                        <p>
+                            выполняет запросы DNS для получения информации о
+                            доменах, включая IP-адреса, записи MX, записи NS и
+                            другие типы DNS-записей.
+                        </p>
+                        <article>
+                            <p>
+                                <code>dig домен</code>
+                                - базовый запрос для получения A-записи
+                                (IP-адрес).
+                            </p>
+                            <p>
+                                <code>dig домен MX</code>
+                                - получение MX-записей (почтовые серверы).
+                            </p>
+                            <p>
+                                <code>dig домен NS</code>
+                                - получение NS-записей (DNS-серверы).
+                            </p>
+                            <p>
+                                <code>dig +short домен</code>
+                                – сокращенный вывод только необходимых данных.
+                            </p>
+                        </article>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ dig omsktec.ru
 
-	<script>
-		tailwind.config = {
-			corePlugins: {
-				preflight: false,
-			}
-		}
-	</script>
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
+;  DiG 9.20.2-1-Debian  omsktec.ru
+;; global options: +cmd
+;; Got answer:
+;; HEADER opcode: QUERY, status: NOERROR, id: 125
+;; flags: qr rd ad; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
 
-		const colors = {
-			blue0: 'rgb(61, 89, 161)',
-			blue: 'rgb(122, 162, 247)',
-			cyan: 'rgb(125, 207, 255)',
-			magenta: 'rgb(187, 154, 247)',
-			orange: 'rgb(255, 158, 100)',
-			yellow: 'rgb(224, 175, 104)',
-			green: 'rgb(158, 206, 106)',
-			teal: 'rgb(26, 188, 156)',
-			red: 'rgb(255, 117, 127)',
-			red1: 'rgb(219, 75, 75)',
-			fg: 'rgb(192, 202, 245)',
-			bg: 'rgb(26, 27, 38)',
-			transparent: "#00000000"
-		};
+;; QUESTION SECTION:
+;omsktec.ru.                    IN      A
 
-		Reveal.initialize({
-			hash: true,
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMermaid, RevealChalkboard, RevealCustomControls],
-			slideNumber: true,
-			customcontrols: {
-				controls: [
-					{
-						icon: '<div></div>',
-						title: 'Clear canvas (DEL)',
-						action: 'RevealChalkboard.clear();'
-					},
-					{
-						icon: '<div></div>',
-						title: 'Toggle chalkboard (B)',
-						action: 'RevealChalkboard.toggleChalkboard();'
-					},
-					{
-						icon: '<div></div>',
-						title: 'Toggle notes canvas (C)',
-						action: 'RevealChalkboard.toggleNotesCanvas();'
-					}
-				],
-			},
-			chalkboard: {
-				boardmarkerWidth: 5,
-				boardmarkers: [
-					{ color: colors.bg, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.fg, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.blue, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.red, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.green, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.yellow, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.teal, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-					{ color: colors.orange, cursor: 'url(' + path + 'img/boardmarker-black.png), auto' },
-				],
-				chalks: [
-					{ color: colors.bg, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.fg, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.blue, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.red, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.green, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.yellow, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.teal, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-					{ color: colors.orange, cursor: 'url(' + path + 'img/chalk-white.png), auto' },
-				]
-			},
-			mermaid: {
-				securityLevel: 'loose',
-				theme: "dark",
-				themeVariables: {
-					darkMode: true,
-					textColor: colors.fg,
-					background: colors.bg,
-					mainBkg: colors.bg,
-					lineColor: colors.fg,
-				}
-			}
-		});
-	</script>
-</body>
+;; ANSWER SECTION:
+omsktec.ru.             0       IN      A       87.249.43.21
 
+;; Query time: 60 msec
+;; SERVER: 172.31.16.1#53(172.31.16.1) (UDP)
+;; WHEN: Thu Oct 03 03:08:15 +06 2024
+;; MSG SIZE  rcvd: 54
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>nslookup</h1>
+                        <p>
+                            позволяет выполнять запросы DNS для получения
+                            информации о доменах, включая IP-адреса и записи
+                            DNS.
+                        </p>
+                        <pre>
+nslookup домен – получение A-записи (IP-адреса) для домена.
+nslookup -type=MX домен – получение MX-записей (почтовых серверов) для домена.
+nslookup -type=NS домен – получение NS-записей (DNS-серверов) для домена.
+nslookup IP-адрес – обратный поиск для получения домена по IP-адресу.                        </pre
+                        >
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ nslookup -type=NS omsktec.ru
+;; Got recursion not available from 172.31.16.1
+Server:         172.31.16.1
+Address:        172.31.16.1#53
+
+Non-authoritative answer:
+omsktec.ru        nameserver = dns2.yandex.net.
+omsktec.ru        nameserver = dns1.yandex.net.
+
+Authoritative answers can be found from:
+
+┌──(pasha㉿armitage)-[~]
+└─$ nslookup -type=SOA omsktec.ru
+;; Got recursion not available from 172.31.16.1
+Server:         172.31.16.1
+Address:        172.31.16.1#53
+
+Non-authoritative answer:
+omsktec.ru
+        origin = dns1.yandex.net
+        mail addr = dns-hosting.yandex.ru
+        serial = 23
+        refresh = 900
+        retry = 90
+        expire = 86400
+        minimum = 900
+
+Authoritative answers can be found from:
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>dnsrecon</h1>
+                        <p>
+                            выполняет детальное сканирование DNS, позволяя
+                            собирать информацию о доменах, поддоменах и
+                            различных записях DNS, таких как A, MX, NS и другие
+                        </p>
+                        <pre>
+dnsrecon -d домен – базовое сканирование для сбора информации о домене.
+dnsrecon -d домен -a – активное сканирование, включая brute force для нахождения поддоменов.
+dnsrecon -d домен -t std – выполнение стандартного поиска DNS-записей.
+dnsrecon -d домен -t axfr – попытка выполнить зональный трансфер (AXFR) для получения полной информации о домене.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ dnsrecon -d omsktec.ru
+[*] std: Performing General Enumeration against: omsktec.ru...
+[-] DNSSEC is not configured for omsktec.ru
+[*]      SOA dns1.yandex.net 213.180.204.213
+[*]      SOA dns1.yandex.net 2a02:6b8::213
+[*]      NS dns1.yandex.net 213.180.204.213
+[*]      NS dns1.yandex.net 2a02:6b8::213
+[*]      NS dns2.yandex.net 93.158.134.213
+[*]      NS dns2.yandex.net 2a02:6b8:0:1::213
+[*]      MX mx.yandex.net 77.88.21.249
+[*]      MX mx.yandex.net 2a02:6b8::311
+[*]      A omsktec.ru 185.215.4.44
+[*]      TXT omsktec.ru MS=ms67873814
+[*]      TXT omsktec.ru v=spf1 redirect=_spf.yandex.net
+[*] Enumerating SRV Records
+[-] No SRV Records Found for omsktec.ru
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>netcraft</h1>
+                        <p>
+                            предоставляет информацию о веб-сайтах, включая
+                            используемые технологии, хостинг, платформу,
+                            SSL-сертификаты и историю изменений
+                        </p>
+                    </section>
+                    <section>
+                        <iframe
+                            src="https://sitereport.netcraft.com"
+                            class="r-stretch"></iframe>
+                    </section>
+                    <section>
+                        <h1>dnsdumpster</h1>
+                        <iframe
+                            src="https://dnsdumpster.com"
+                            class="r-stretch"></iframe>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>tracerout</h1>
+                        <p>
+                            отслеживает маршрут, который пакеты данных проходят
+                            от вашего устройства до целевого IP-адреса или
+                            домена, показывая все промежуточные узлы
+                            (маршрутизаторы) на пути.
+                        </p>
+                        <pre>
+traceroute домен или traceroute IP-адрес – базовая команда для отслеживания маршрута к указанному домену или IP-адресу.
+traceroute -m число домен – установка максимального числа "прыжков" (hop) в трассировке.
+traceroute -p порт домен – указание порта для TCP-трафика, который будет использоваться при трассировке.
+traceroute -I домен – использование ICMP-запросов вместо UDP-пакетов.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch">
+                            <code>
+┌──(pasha㉿armitage)-[~]
+└─$ traceroute omsktec.ru
+traceroute to omsktec.ru (185.215.4.44), 30 hops max, 60 byte packets
+ 1  armitage.mshome.net (172.31.16.1)  0.472 ms  0.427 ms  0.405 ms
+ 2  * * *
+ 3  omsk-bras5.sib.ip.rostelecom.ru (213.228.116.141)  2.038 ms  2.280 ms  3.940 ms
+ 4  ae8.omsk-rgr6.sib.ip.rostelecom.ru (213.228.106.26)  3.905 ms  3.873 ms  4.669 ms
+ 5  95.167.93.75 (95.167.93.75)  13.095 ms 188.128.106.124 (188.128.106.124)  14.677 ms 95.167.93.75 (95.167.93.75)  15.699 ms
+ 6  * * *
+ 7  * * *
+ 8  * * *
+                            </code>
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Whatweb</h1>
+                        <p>
+                            определяет технологии, используемые на веб-сайте,
+                            включая серверы, фреймворки, языки программирования,
+                            библиотеки и плагины
+                        </p>
+                        <article>
+                            <p>
+                                <code>whatweb URL</code>
+                                – базовое сканирование для определения
+                                технологий на сайте.
+                            </p>
+                            <p>
+                                <code>whatweb -v URL</code>
+                                – более подробный вывод информации о
+                                технологиях.
+                            </p>
+                            <p>
+                                <code>whatweb -t 10 URL</code>
+                                – сканирование с указанием количества потоков
+                                для ускорения работы.
+                            </p>
+                        </article>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ whatweb -v -a3 omsktec.ru
+WhatWeb report for http://omsktec.ru
+Status    : 301 Moved Permanently
+Title     : 301 Moved Permanently
+IP        : Unknown
+Country   : Unknown
+
+Summary   : Cookies[__ddg1_], HTTPServer[ddos-guard], HttpOnly[__ddg1_], RedirectLocation[https://omsktec.ru/], UncommonHeaders[x-host], X-Host[omsktec.ru]
+
+Detected Plugins:
+[ Cookies ]
+        Display the names of cookies in the HTTP headers. The
+        values are not returned to save on space.
+
+        String       : __ddg1_
+
+[ HTTPServer ]
+        HTTP server header string. This plugin also attempts to
+        identify the operating system from the server header.
+
+        String       : ddos-guard (from server string)
+
+[ HttpOnly ]
+        If the HttpOnly flag is included in the HTTP set-cookie
+        response header and the browser supports it then the cookie
+        cannot be accessed through client side script - More Info:
+        http://en.wikipedia.org/wiki/HTTP_cookie
+
+        String       : __ddg1_
+
+[ RedirectLocation ]
+        HTTP Server string location. used with http-status 301 and
+        302
+
+        String       : https://omsktec.ru/ (from location)
+
+[ UncommonHeaders ]
+        Uncommon HTTP server headers. The blacklist includes all
+        the standard headers and many non standard but common ones.
+        Interesting but fairly common headers should have their own
+        plugins, eg. x-powered-by, server and x-aspnet-version.
+        Info about headers can be found at www.http-stats.com
+
+        String       : x-host (from headers)
+
+[ X-Host ]
+        This plugin retrieves the X-Host, X-HostName, X-Host-Name
+        and X-Host-IP value from the HTTP header.
+
+        String       : omsktec.ru
+
+HTTP Headers:
+        HTTP/1.1 301 Moved Permanently
+        Server: ddos-guard
+        Connection: close
+        Set-Cookie: __ddg1_=uwhT4VhcZviCYZncYPok; Domain=.omsktec.ru; HttpOnly; Path=/; Expires=Thu, 02-Oct-2025 21:13:14 GMT
+        Date: Wed, 02 Oct 2024 21:13:14 GMT
+        Content-Type: text/html; charset=iso-8859-1
+        Content-Length: 225
+        Location: https://omsktec.ru/
+        X-Host: omsktec.ru
+        cache-control: max-age=0
+        cache-control: public
+
+WhatWeb report for https://omsktec.ru/
+Status    : 200 OK
+Title     : КИТ
+IP        : Unknown
+Country   : Unknown
+
+Summary   : Cookies[__ddg1_], Email[info@omsktec.ru], HTML5, HTTPServer[ddos-guard], HttpOnly[__ddg1_], JQuery[1.10.2], Open-Graph-Protocol[website], Script[text/javascript], UncommonHeaders[x-host], X-Frame-Options[SAMEORIGIN], X-Host[omsktec.ru]
+
+Detected Plugins:
+[ Cookies ]
+        Display the names of cookies in the HTTP headers. The
+        values are not returned to save on space.
+
+        String       : __ddg1_
+
+[ Email ]
+        Extract email addresses. Find valid email address and
+        syntactically invalid email addresses from mailto: link
+        tags. We match syntactically invalid links containing
+        mailto: to catch anti-spam email addresses, eg. bob at
+        gmail.com. This uses the simplified email regular
+        expression from
+        http://www.regular-expressions.info/email.html for valid
+        email address matching.
+
+        String       : info@omsktec.ru
+        String       : info@omsktec.ru
+
+[ HTML5 ]
+        HTML version 5, detected by the doctype declaration
+
+
+[ HTTPServer ]
+        HTTP server header string. This plugin also attempts to
+        identify the operating system from the server header.
+
+        String       : ddos-guard (from server string)
+
+[ HttpOnly ]
+        If the HttpOnly flag is included in the HTTP set-cookie
+        response header and the browser supports it then the cookie
+        cannot be accessed through client side script - More Info:
+        http://en.wikipedia.org/wiki/HTTP_cookie
+
+        String       : __ddg1_
+
+[ JQuery ]
+        A fast, concise, JavaScript that simplifies how to traverse
+        HTML documents, handle events, perform animations, and add
+        AJAX.
+
+        Version      : 1.10.2
+        Website     : http://jquery.com/
+
+[ Open-Graph-Protocol ]
+        The Open Graph protocol enables you to integrate your Web
+        pages into the social graph. It is currently designed for
+        Web pages representing profiles of real-world things .
+        things like movies, sports teams, celebrities, and
+        restaurants. Including Open Graph tags on your Web page,
+        makes your page equivalent to a Facebook Page.
+
+        Version      : website
+
+[ Script ]
+        This plugin detects instances of script HTML elements and
+        returns the script language/type.
+
+        String       : text/javascript
+
+[ UncommonHeaders ]
+        Uncommon HTTP server headers. The blacklist includes all
+        the standard headers and many non standard but common ones.
+        Interesting but fairly common headers should have their own
+        plugins, eg. x-powered-by, server and x-aspnet-version.
+        Info about headers can be found at www.http-stats.com
+
+        String       : x-host (from headers)
+
+[ X-Frame-Options ]
+        This plugin retrieves the X-Frame-Options value from the
+        HTTP header. - More Info:
+        http://msdn.microsoft.com/en-us/library/cc288472%28VS.85%29.
+        aspx
+
+        String       : SAMEORIGIN
+
+[ X-Host ]
+        This plugin retrieves the X-Host, X-HostName, X-Host-Name
+        and X-Host-IP value from the HTTP header.
+
+        String       : omsktec.ru
+
+HTTP Headers:
+        HTTP/1.1 200 OK
+        Server: ddos-guard
+        Connection: close
+        Set-Cookie: __ddg1_=QVTjzNABp2Kvl1fmRAOg; Domain=.omsktec.ru; HttpOnly; Path=/; Expires=Thu, 02-Oct-2025 21:13:16 GMT
+        Date: Wed, 02 Oct 2024 21:13:16 GMT
+        Content-Type: text/html; charset=UTF-8
+        Content-Length: 15104
+        Last-Modified: Tue, 06 Jun 2023 05:54:49 GMT
+        ETag: "10679-5fd6fa846c33b-gzip"
+        Accept-Ranges: bytes
+        Vary: Accept-Encoding
+        Content-Encoding: gzip
+        X-Frame-Options: SAMEORIGIN
+        X-Host: omsktec.ru
+        cache-control: max-age=0
+        cache-control: public
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>fierce</h1>
+                        <p>
+                            выполняет разведку DNS, направленную на нахождение
+                            поддоменов и связанных записей DNS для целевого
+                            домена
+                        </p>
+                        <pre>
+fierce --domain домен – базовое сканирование для нахождения поддоменов указанного домена.
+fierce --domain домен --dns-server DNS-сервер – указание конкретного DNS-сервера для выполнения запроса.
+fierce --domain домен --range IP-адреса – выполнение сканирования для указанного диапазона IP-адресов.
+                        </pre>
+                    </section>
+                    <section>
+                        <h1>knockpy</h1>
+                        <p>
+                            инструмент для нахождения поддоменов, который
+                            использует словари и DNS-запросы для обнаружения
+                            скрытых поддоменов целевого домена
+                        </p>
+                        <pre>
+knockpy -d домен – базовое сканирование для нахождения поддоменов указанного домена.
+knockpy -d --bruteforce домен – выполнение сканирования поддоменов перебором.
+knockpy -d домен -w словарь.txt – указание собственного словаря для поиска поддоменов.
+knockpy -d домен -o файл.txt – сохранение результатов в указанный файл.
+                        </pre>
+
+                        <p>Можно использовать встроенные словари seclists</p>
+                        <code>
+                            /usr/share/seclists/Discovery/DNS/Shubs-stackoverflow.txt
+                        </code>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ knockpy --bruteforce -d omsktec.ru                                                    
+Processing: 100%|████████████████████████| 10756/10756 [01:26-00:00, 124.18it/s]
+www.omsktec.ru ['185.215.4.44']
+http  [301, 'https://www.omsktec.ru/', 'ddos-guard']
+https [200, None, 'ddos-guard']
+cert  [True, '2024-12-29']
+
+mail.omsktec.ru ['77.88.21.37']
+http  [302, 'https://mail.yandex.ru/?pdd_domain=omsktec.ru', 'nginx']
+https [302, 'https://mail.yandex.ru/?pdd_domain=omsktec.ru', 'nginx']
+cert  [True, '2024-11-05']
+
+2 domains
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>sublist3r</h1>
+                        <p>
+                            инструмент для быстрого поиска поддоменов, который
+                            использует различные поисковые движки и сервисы для
+                            сбора информации о поддоменах целевого домена
+                        </p>
+                        <pre>
+sublist3r -d домен – базовый запуск для поиска поддоменов указанного домена.
+sublist3r -d домен -o файл.txt – сохранение найденных поддоменов в указанный файл.
+sublist3r -d домен -p 5 – указание количества потоков для ускорения процесса.
+sublist3r -d домен -t – выполнение поиска с использованием технологий DNS bruteforce.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ sublist3r -d omsktec.ru
+
+                 ____        _     _ _     _   _____
+                / ___| _   _| |__ | (_)___| |_|___ / _ __
+                \___ \| | | | '_ \| | / __| __| |_ \| '__|
+                 ___) | |_| | |_) | | \__ \ |_ ___) | |
+                |____/ \__,_|_.__/|_|_|___/\__|____/|_|
+
+                # Coded By Ahmed Aboul-Ela - @aboul3la
+
+[-] Enumerating subdomains now for omsktec.ru
+[-] Searching now in Baidu..
+[-] Searching now in Yahoo..
+[-] Searching now in Google..
+[-] Searching now in Bing..
+[-] Searching now in Ask..
+[-] Searching now in Netcraft..
+[-] Searching now in DNSdumpster..
+[-] Searching now in Virustotal..
+[-] Searching now in ThreatCrowd..
+[-] Searching now in SSL Certificates..
+[-] Searching now in PassiveDNS..
+[!] Error: Virustotal probably now is blocking our requests
+[-] Total Unique Subdomains Found: 1
+www.omsktec.ru
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Google</h1>
+                        <h4>Ищем все поддомены</h4>
+                        <code>site:*.yandex.ru -site:www.yandex.ru</code>
+                        <br>
+                        <br>
+                        <h4>Ищем админку wordpress</h4>
+                        <code>site:*.yandex.ru inurl:wp-admin.php</code>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>wafw00f</h1>
+                        <p>
+                            определяет наличие и тип веб-аппликационных
+                            фаерволов (WAF) на сайте, что помогает понять
+                            уровень защиты веб-приложения
+                        </p>
+                        <pre>
+wafw00f URL – базовое сканирование для определения WAF на сайте.
+wafw00f -a URL – выполнение анализа с более детальной информацией.
+wafw00f --ignore-robots URL – игнорирование правил robots.txt для сканирования.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ wafw00f omsktec.ru
+
+                   ______
+                  /      \
+                 (  Woof! )
+                  \  ____/                      )
+                  ,,                           ) (_
+             .-. -    _______                 ( |__|
+            ()``; |==|_______)                .)|__|
+            / ('        /|\                  (  |__|
+        (  /  )        / | \                  . |__|
+         \(_)_))      /  |  \                   |__|
+
+                    ~ WAFW00F : v2.2.0 ~
+    The Web Application Firewall Fingerprinting Toolkit
+
+[*] Checking https://omsktec.ru
+[+] The site https://omsktec.ru is behind DDoS-GUARD (DDOS-GUARD CORP.) WAF.
+[~] Number of requests: 2
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>theHarvester</h1>
+                        <p>
+                            собирает информацию о целевых доменах, включая
+                            адреса электронной почты, поддомены, имена хостов и
+                            другие данные из различных публичных источников
+                        </p>
+                        <pre>
+theHarvester -d домен -b источник – базовое сканирование для сбора информации о домене из указанного источника (например, Google, Bing).
+theHarvester -d домен -b all – сканирование из всех доступных источников.
+theHarvester -d домен -l количество – ограничение количества получаемых результатов.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ theHarvester -d omsktec.ru -b yahoo,bing,duckduckgo,rapiddns
+Read proxies.yaml from /home/pasha/.theHarvester/proxies.yaml
+*******************************************************************
+*  _   _                                            _             *
+* | |_| |__   ___    /\  /\__ _ _ ____   _____  ___| |_ ___ _ __  *
+* | __|  _ \ / _ \  / /_/ / _` | '__\ \ / / _ \/ __| __/ _ \ '__| *
+* | |_| | | |  __/ / __  / (_| | |   \ V /  __/\__ \ ||  __/ |    *
+*  \__|_| |_|\___| \/ /_/ \__,_|_|    \_/ \___||___/\__\___|_|    *
+*                                                                 *
+* theHarvester 4.6.0                                              *
+* Coded by Christian Martorella                                   *
+* Edge-Security Research                                          *
+* cmartorella@edge-security.com                                   *
+*                                                                 *
+*******************************************************************
+
+[*] Target: omsktec.ru
+
+Read api-keys.yaml from /home/pasha/.theHarvester/api-keys.yaml
+[*] Searching Duckduckgo.
+        Searching 0 results.
+[*] Searching Bing.
+[*] Searching Rapiddns.
+[*] Searching Yahoo.
+
+[*] No IPs found.
+
+[*] Emails found: 1
+----------------------
+info@omsktec.ru
+
+[*] Hosts found: 4
+---------------------
+mail.omsktec.ru:domain.mail.yandex.net
+mail.omsktec.ru:domain.mail.yandex.net.
+mail.omsktec.ru:mail.yandex.ru
+mail.omsktec.ru:mx.yandex.ru
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>recon-ng</h1>
+                        <p>
+                            предоставляет полноценную платформу для разведки,
+                            позволяя собирать информацию о целях, включая
+                            домены, IP-адреса, адреса электронной почты и
+                            социальные сети, с помощью различных модулей и API
+                        </p>
+                        <pre>
+recon-ng – запуск интерфейса Recon-ng.
+workspaces add имя_рабочей_области – создание новой рабочей области для проекта.
+
+use модуль – выбор конкретного модуля для выполнения (например, use recon/domains-hosts/brute_hosts).
+run – запуск выбранного модуля.
+back – вернуться назад.
+show info – отображение информации о выбранном модуле.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ recon-ng
+[*] Version check disabled.
+
+    _/_/_/    _/_/_/_/    _/_/_/    _/_/_/    _/      _/            _/      _/    _/_/_/
+   _/    _/  _/        _/        _/      _/  _/_/    _/            _/_/    _/  _/
+  _/_/_/    _/_/_/    _/        _/      _/  _/  _/  _/  _/_/_/_/  _/  _/  _/  _/  _/_/_/
+ _/    _/  _/        _/        _/      _/  _/    _/_/            _/    _/_/  _/      _/
+_/    _/  _/_/_/_/    _/_/_/    _/_/_/    _/      _/            _/      _/    _/_/_/
+
+
+                                          /\
+                                         / \\ /\
+    Sponsored by...               /\  /\/  \\V  \/\
+                                 / \\/ // \\\\\ \\ \/\
+                                // // BLACK HILLS \/ \\
+                               www.blackhillsinfosec.com
+
+                  ____   ____   ____   ____ _____ _  ____   ____  ____
+                 |____] | ___/ |____| |       |   | |____  |____ |
+                 |      |   \_ |    | |____   |   |  ____| |____ |____
+                                   www.practisec.com
+
+                      [recon-ng v5.1.2, Tim Tomes (@lanmaster53)]
+
+[*] No modules enabled/installed.    </code></pre>
+                    </section>
+                    <section>
+                        <h1>Создаем воркспейс</h1>
+                        <pre class="r-stretch"><code>
+[recon-ng][default] - workspaces create omsktec
+[recon-ng][omsktec] -                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Как зайти после сессии обратно в воркспейс</h1>
+                        <pre class="r-stretch"><code>
+[recon-ng][default] - workspaces
+Manages workspaces
+
+Usage: workspaces -create|list|load|remove- [...]
+
+[recon-ng][default] - workspaces list
+
+  +----------------------------------+
+  | Workspaces |       Modified      |
+  +----------------------------------+
+  | default    | 2024-10-03 03:35:41 |
+  | omsktec      | 2024-10-03 03:37:03 |
+  +----------------------------------+
+
+[recon-ng][default] - workspaces load omsktec
+[recon-ng][omsktec] -
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Модули</h1>
+                        <pre class="r-stretch"><code>
+[recon-ng][omsktec] - marketplace search whois_pocs
+[recon-ng][omsktec] - marketplace install whois_pocs
+[recon-ng][omsktec] - modules load whois_pocs
+[recon-ng][omsktec][whois_pocs] - info
+                        </code></pre>
+                        <h4>whois_pocs</h4>
+                        <p>Подходит для поиска контактной информации</p>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+[recon-ng][omsktec][whois_pocs] - options set SOURCE omsktec.ru
+SOURCE =- omsktec.ru
+[recon-ng][omsktec][whois_pocs] - run
+
+--------
+omsktec.RU
+--------
+[*] URL: http://whois.arin.net/rest/pocs;domain=omsktec.ru
+[*] No contacts found.
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h1>Hackertarget</h1>
+                        <pre class="r-stretch"><code>
+[recon-ng][omsktec] - marketplace search hackertarget
+[*] Searching module index for 'hackertarget'...
+
+  +---------------------------------------------------------------------------------+
+  |               Path               | Version |     Status    |  Updated   | D | K |
+  +---------------------------------------------------------------------------------+
+  | recon/domains-hosts/hackertarget | 1.1     | not installed | 2020-05-17 |   |   |
+  +---------------------------------------------------------------------------------+
+
+  D = Has dependencies. See info for details.
+  K = Requires keys. See info for details.
+
+[recon-ng][omsktec] - marketplace install hackertarget
+[*] Module installed: recon/domains-hosts/hackertarget
+[*] Reloading modules...
+[recon-ng][omsktec] - modules load hackertarget
+[recon-ng][omsktec][hackertarget] - options set SOURCE omsktec.ru
+SOURCE =- omsktec.ru
+[recon-ng][omsktec][hackertarget] - run
+
+--------
+omsktec.RU
+--------
+[*] Country: None
+[*] Host: www.omsktec.ru
+[*] Ip_Address: 185.215.4.44
+[*] Latitude: None
+[*] Longitude: None
+[*] Notes: None
+[*] Region: None
+[*] --------------------------------------------------
+
+-------
+SUMMARY
+-------
+[*] 1 total (1 new) hosts found.
+                            [recon-ng][omsktec][hackertarget] -
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>nmap</h1>
+                        <p>инструмент для сканирования сети, который позволяет обнаруживать устройства, открытые порты и службы, работающие на них</p>
+                        <pre>
+nmap IP-адрес – базовое сканирование для обнаружения открытых портов и служб на целевом IP-адресе.
+nmap -sV IP-адрес – сканирование с определением версий служб, работающих на открытых портах.
+nmap -O IP-адрес – попытка определения операционной системы целевого устройства.
+nmap -p порты IP-адрес – сканирование конкретных портов (например, nmap -p 80,443 IP-адрес).
+nmap -A IP-адрес – полное сканирование с использованием различных техник для обнаружения служб, операционной системы и версии программного обеспечения.
+                        </pre>
+                    </section>
+                    <section>
+                        <pre class="r-stretch"><code>
+┌──(pasha㉿armitage)-[~]
+└─$ sudo nmap -sS -sV -F 185.215.4.44
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-03 04:26 +06
+Nmap scan report for 185.215.4.44
+Host is up (0.046s latency).
+Not shown: 98 filtered tcp ports (no-response)
+PORT    STATE SERVICE   VERSION
+80/tcp  open  http      ddos-guard
+443/tcp open  ssl/https ddos-guard
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.94SVN%I=7%D=10/3%Time=66FDC88E%P=x86_64-pc-linux-gnu%r(G
+SF:etRequest,267,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nServer:\x20ddos-gu
+SF:ard\r\nConnection:\x20close\r\nSet-Cookie:\x20__ddg1_=pkyqEaPCE4Q1cDiOt
+SF:7uH;\x20Domain=\.;\x20HttpOnly;\x20Path=/;\x20Expires=Thu,\x2002-Oct-20
+SF:25\x2022:26:25\x20GMT\r\nDate:\x20Wed,\x2002\x20Oct\x202024\x2022:26:25
+SF:\x20GMT\r\nContent-Type:\x20text/html\r\n\r\n-!DOCTYPE\x20html--html--h
+SF:ead--title-400-/title--/head--body\x20style=\"font-family:\x20sans-seri
+SF:f;\"--center--p--br\x20/--br\x20/--img\x20src=\"https://tilda\.ws/img/l
+SF:ogo404\.png\"\x20border=\"0\"\x20alt=\"Tilda\"\x20width=\"120\"\x20heig
+SF:ht=\"88\"\x20/--/p--h1-&nbsp;-/h1--h1-400-/h1--h4-Bad\x20Request-/h4--h
+SF:1-&nbsp;-/h1--pre-Request\x2056cf14f2b19680b90903c8348f57ce29\x20with\x
+SF:20error:\x20400\x20-\x20Bad\x20Request-/pre--/center--/body--/html-")%r
+SF:(HTTPOptions,199,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nServer:\x20ddos
+SF:-guard\r\nConnection:\x20close\r\nSet-Cookie:\x20__ddg1_=tflLWOGCLL0rCY
+SF:lOxzCS;\x20Domain=\.;\x20HttpOnly;\x20Path=/;\x20Expires=Thu,\x2002-Oct
+SF:-2025\x2022:26:25\x20GMT\r\nDate:\x20Wed,\x2002\x20Oct\x202024\x2022:26
+SF::24\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x20150\r\n\
+SF:r\n-html-\r\n-head--title-400\x20Bad\x20Request-/title--/head-\r\n-body
+SF:-\r\n-center--h1-400\x20Bad\x20Request-/h1--/center-\r\n-hr--center-ngi
+SF:nx-/center-\r\n-/body-\r\n-/html-\r\n")%r(RTSPRequest,2E3,"HTTP/1\.1\x2
+SF:0400\x20Bad\x20Request\r\nServer:\x20ngjit\r\nDate:\x20Wed,\x2002\x20Oc
+SF:t\x202024\x2022:26:25\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x
+SF:20text/html;\x20charset=utf-8\r\nContent-Length:\x20579\r\n\r\n-!DOCTYP
+SF:E\x20html--html\x20lang=en--meta\x20charset=utf-8--meta\x20name=viewpor
+SF:t\x20content=\"initial-scale=1,\x20minimum-scale=1,\x20width=device-wid
+SF:th\"--title-Error\x20400-/title--style-\*{margin:0;padding:0}html{font:
+SF:15px/22px\x20arial,sans-serif;background:\x20#fff;color:#222;padding:15
+SF:px}body{margin:7%\x20auto\x200;max-width:390px;min-height:180px;padding
+SF::30px\x200\x2015px}p{margin:11px\x200\x2022px;overflow\x20:hidden}ins{c
+SF:olor:#777;text-decoration\x20:none;}-/style--p--b-400\x20-\x20Bad\x20Re
+SF:quest\x20\.-/b-\x20-ins-That\xe2\x80\x99s\x20an\x20error\.-/ins--p-Serv
+SF:er\x20could\x20not\x20understand\x20the\x20request\x20due\x20to\x20inva
+SF:lid\x20syntax\.\x20\x20-ins-That\xe2\x80\x99s\x20all\x20we\x20know\.-/i
+SF:ns-");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port443-TCP:V=7.94SVN%T=SSL%I=7%D=10/3%Time=66FDC895%P=x86_64-pc-linux-
+SF:gnu%r(GetRequest,267,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nServer:\x20
+SF:ddos-guard\r\nConnection:\x20close\r\nSet-Cookie:\x20__ddg1_=dmrOPdS7LV
+SF:RY1VPqDXGY;\x20Domain=\.;\x20HttpOnly;\x20Path=/;\x20Expires=Thu,\x2002
+SF:-Oct-2025\x2022:26:31\x20GMT\r\nDate:\x20Wed,\x2002\x20Oct\x202024\x202
+SF:2:26:31\x20GMT\r\nContent-Type:\x20text/html\r\n\r\n-!DOCTYPE\x20html--
+SF:html--head--title-400-/title--/head--body\x20style=\"font-family:\x20sa
+SF:ns-serif;\"--center--p--br\x20/--br\x20/--img\x20src=\"https://tilda\.w
+SF:s/img/logo404\.png\"\x20border=\"0\"\x20alt=\"Tilda\"\x20width=\"120\"\
+SF:x20height=\"88\"\x20/--/p--h1-&nbsp;-/h1--h1-400-/h1--h4-Bad\x20Request
+SF:-/h4--h1-&nbsp;-/h1--pre-Request\x20b4ae6574e85797da389c334c37a85c58\x2
+SF:0with\x20error:\x20400\x20-\x20Bad\x20Request-/pre--/center--/body--/ht
+SF:ml-")%r(HTTPOptions,267,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nServer:\
+SF:x20ddos-guard\r\nConnection:\x20close\r\nSet-Cookie:\x20__ddg1_=TW5iEGp
+SF:QqtXshHJqqMcz;\x20Domain=\.;\x20HttpOnly;\x20Path=/;\x20Expires=Thu,\x2
+SF:002-Oct-2025\x2022:26:31\x20GMT\r\nDate:\x20Wed,\x2002\x20Oct\x202024\x
+SF:2022:26:31\x20GMT\r\nContent-Type:\x20text/html\r\n\r\n-!DOCTYPE\x20htm
+SF:l--html--head--title-400-/title--/head--body\x20style=\"font-family:\x2
+SF:0sans-serif;\"--center--p--br\x20/--br\x20/--img\x20src=\"https://tilda
+SF:\.ws/img/logo404\.png\"\x20border=\"0\"\x20alt=\"Tilda\"\x20width=\"120
+SF:\"\x20height=\"88\"\x20/--/p--h1-&nbsp;-/h1--h1-400-/h1--h4-Bad\x20Requ
+SF:est-/h4--h1-&nbsp;-/h1--pre-Request\x2055abc7f48a956710c23296dfdcb889e2
+SF:\x20with\x20error:\x20400\x20-\x20Bad\x20Request-/pre--/center--/body--
+SF:/html-")%r(FourOhFourRequest,199,"HTTP/1\.1\x20400\x20Bad\x20Request\r\
+SF:nServer:\x20ddos-guard\r\nConnection:\x20close\r\nSet-Cookie:\x20__ddg1
+SF:_=G2D5ucEq0re9zWmTGFEP;\x20Domain=\.;\x20HttpOnly;\x20Path=/;\x20Expire
+SF:s=Thu,\x2002-Oct-2025\x2022:26:31\x20GMT\r\nDate:\x20Wed,\x2002\x20Oct\
+SF:x202024\x2022:26:31\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Len
+SF:gth:\x20150\r\n\r\n-html-\r\n-head--title-400\x20Bad\x20Request-/title-
+SF:-/head-\r\n-body-\r\n-center--h1-400\x20Bad\x20Request-/h1--/center-\r\
+SF:n-hr--center-nginx-/center-\r\n-/body-\r\n-/html-\r\n");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 27.72 seconds
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h1>Расскажите мне кто я :)</h1>
+                    <a style="font-size: 4rem" href="https://ktkv.dev">
+                        ktkv.dev
+                    </a>
+                </section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/qrcode/qrcode.js"></script>
+        <script src="plugin/mermaid/mermaid.js"></script>
+        <script src="plugin/chalkboard/plugin.js"></script>
+        <script src="plugin/customcontrols/plugin.js"></script>
+
+        <script>
+            tailwind.config = {
+                corePlugins: {
+                    preflight: false,
+                },
+            }
+        </script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+
+            const colors = {
+                blue0: 'rgb(61, 89, 161)',
+                blue: 'rgb(122, 162, 247)',
+                cyan: 'rgb(125, 207, 255)',
+                magenta: 'rgb(187, 154, 247)',
+                orange: 'rgb(255, 158, 100)',
+                yellow: 'rgb(224, 175, 104)',
+                green: 'rgb(158, 206, 106)',
+                teal: 'rgb(26, 188, 156)',
+                red: 'rgb(255, 117, 127)',
+                red1: 'rgb(219, 75, 75)',
+                fg: 'rgb(192, 202, 245)',
+                bg: 'rgb(26, 27, 38)',
+                transparent: '#00000000',
+            }
+
+            Reveal.initialize({
+                hash: true,
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [
+                    RevealMarkdown,
+                    RevealHighlight,
+                    RevealNotes,
+                    RevealMermaid,
+                    RevealChalkboard,
+                    RevealCustomControls,
+                ],
+                slideNumber: true,
+                customcontrols: {
+                    controls: [
+                        {
+                            icon: '<div></div>',
+                            title: 'Clear canvas (DEL)',
+                            action: 'RevealChalkboard.clear();',
+                        },
+                        {
+                            icon: '<div></div>',
+                            title: 'Toggle chalkboard (B)',
+                            action: 'RevealChalkboard.toggleChalkboard();',
+                        },
+                        {
+                            icon: '<div></div>',
+                            title: 'Toggle notes canvas (C)',
+                            action: 'RevealChalkboard.toggleNotesCanvas();',
+                        },
+                    ],
+                },
+                chalkboard: {
+                    boardmarkerWidth: 5,
+                    boardmarkers: [
+                        {
+                            color: colors.bg,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.fg,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.blue,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.red,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.green,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.yellow,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.teal,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                        {
+                            color: colors.orange,
+                            cursor:
+                                'url(' +
+                                path +
+                                'img/boardmarker-black.png), auto',
+                        },
+                    ],
+                    chalks: [
+                        {
+                            color: colors.bg,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.fg,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.blue,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.red,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.green,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.yellow,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.teal,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                        {
+                            color: colors.orange,
+                            cursor:
+                                'url(' + path + 'img/chalk-white.png), auto',
+                        },
+                    ],
+                },
+                mermaid: {
+                    securityLevel: 'loose',
+                    theme: 'dark',
+                    themeVariables: {
+                        darkMode: true,
+                        textColor: colors.fg,
+                        background: colors.bg,
+                        mainBkg: colors.bg,
+                        lineColor: colors.fg,
+                    },
+                },
+            })
+        </script>
+    </body>
 </html>
+
